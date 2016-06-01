@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Interactive Stock Ticker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.css"
+     type="text/css" />
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.js">
+    </script>
+    <script type="text/javascript">Bokeh.set_log_level("info");</script>
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>User input:</h1>
+      <strong>Please enter a stock ticker (e.g. GOOG):</strong>
+      <br>
+
+      <form id='stock' action='' method='POST'>
+      <input type="text" placeholder="Ticker symbol" name="symbol" value="{{request.form.symbol }}">
+      <br><br>
+      
+          <strong>Please check all desired price features:</strong><br>
+      <input type="checkbox" name="open" id="Open" value="{{request.form.open}}">  Opening price<br>  
+      <input type="checkbox" name="adjopen" id="Adj. Open" value="{{request.form.adjopen}}"> Adjusted opening price<br>
+      <input type="checkbox" name="close" id="Close" value="{{request.form.close}}"> Closing price<br>
+      <input type="checkbox" name="adjclose" id="Adj. Close" value="{{request.form.adjclose}}"> Adjusted closing price <br>
+      <input class="btn btn-default" type="submit" value="Submit">
+      </form>
+      <br>
+      {{ symbol }}
+        
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+      
+    
+    
+    </div>
+  </body>
+</html>
